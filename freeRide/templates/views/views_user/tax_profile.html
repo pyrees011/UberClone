@@ -1,0 +1,74 @@
+{% extends 'profile_settings.html' %}
+
+{% block header%}tax profile{% endblock %}
+
+{% block sidebar %}
+<a href="{{ url_for('views_user.homepage') }}" class="list-group-item-link">
+    <li class="list-group-item">Ride now</li>
+</a>
+<a href="{{ url_for('views_user.mytrip') }}" class="list-group-item-link">
+    <li class="list-group-item">my trips</li>
+</a>
+<a href="{{ url_for('views_user.payment') }}" class="list-group-item-link">
+    <li class="list-group-item">wallet</li>
+</a>
+<a href="{{ url_for('views_user.tax_profile') }}" class="list-group-item-link">
+    <li class="list-group-item active">Tax profile</li>
+</a>
+<a href="{{ url_for('views_user.profile_settings') }}" class="list-group-item-link">
+    <li class="list-group-item">settings</li>
+</a>
+{% endblock %}
+
+{% block middle %}
+<div class="settings-page container col-6">
+    <div class="tax-form-div">
+        <h1>Personal tax info</h1>
+        <form action="" class="tax-form" method="post">
+            <div class="mb-4">
+                <label for="name" class="form-label">name</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="mb-4">
+                <label for="pan" class="form-label">PAN</label>
+                <input type="text" class="form-control" id="pan">
+            </div>
+            <div class="mb-4">
+                <label for="address" class="form-label">city address</label>
+                <input type="text" class="form-control" id="address">
+            </div>
+            <div class="mb-4">
+                <label for="city" class="form-label">city</label>
+                <input type="text" class="form-control" id="city">
+            </div>
+            <div class="mb-4">
+                <label for="state" class="form-label">state</label>
+                <select class="form-select" aria-label="state" id="state">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+            <div class="mb-4">
+                <label for="pincode" class="form-label">pincode</label>
+                <input type="text" class="form-control" id="pincode">
+            </div>
+            <div class="mb-4 form-check">
+                <input type="checkbox" class="form-check-input" id="disclamer">
+                <label class="form-check-label" for="disclamer">Disclamer</label>
+            </div>
+
+            <div class="disclaimer-info">
+                <ol>
+                    <li> I confirm that the information I have provided to Uber regarding my local address, State and PAN is correct. I consent expressly to Uber to issue GST compliant invoice on my behalf, for the services I provides through Uber Platform. </li>
+                    <li> I understand and agree that in case there is any change in information I have provided to Uber, it is my obligation and responsibility to inform such changes to Uber. I understand that I shall be liable to any tax liability arising on account of furnishing incorrect information and / or not informing any change in information to Uber.</li>
+                    <li> I acknowledge and agree that Uber does not undertake any responsibility if I provide false information, including but not limited to information related to my local address & PAN. </li>
+                </ol>
+            </div>
+
+            <button type="submit" class="btn btn-dark">save changes</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

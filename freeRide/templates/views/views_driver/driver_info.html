@@ -1,0 +1,90 @@
+{% extends 'views_navbar.html' %}
+
+{% block css %} {{ url_for('static', filename='css/views/car_info.css') }} {% endblock %}
+
+{% block scripts %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+type="text/css"
+/>
+<script src="../../static/js/views/car_info.js" defer></script>
+{% endblock %}
+
+{% block header %}driver_info{% endblock %}
+
+{% block content %}
+
+<div class="cover_block">
+    <div class="driver_profile container">
+        <h2>Driver Profile</h2>
+        <form action="{{ url_for('mongo_driver.add_driver_details') }}" method="POST" enctype="multipart/form-data">
+
+            <input type="hidden" id="car_type" name="car_type" value="green">
+
+            <div class="form-group mb-3 mt-4">
+                <label for="avatar">profile Picture:</label>
+                <input type="file" class="form-control-file" id="profile_image" name="profile_image">
+            </div>
+
+            <div class="form-group mb-3 mt-4">
+                <label for="license_image">Licence:</label>
+                <input type="file" class="form-control-file" id="license_image" name="license_image">
+            </div>
+
+            <div class="form-group">
+                <label for="plates">plates:</label>
+                <input type="text" class="form-control" id="plates" name="plates" value="">
+            </div>
+
+            <div class="form-group">
+                <label for="email">email:</label>
+                <input type="text" class="form-control" id="email" name="email" value="">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">phone:</label>
+                <input type="number" class="form-control" id="phone" name="phone" value="">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Save details</button>
+        </form>
+    </div>
+
+    <div class="main-cont-car-info">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+        <div class="card h-100 car-card active" data-value="green">
+            <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_Green.png" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Green</h5>
+            <p class="card-text">faster, Affordable, everyday rides</p>
+            </div>
+        </div>
+        </div>
+        <div class="col">
+        <div class="card car-card h-100" data-value="berline">
+            <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/Black_v1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">berline</h5>
+            <p class="card-text">High end cars with top-rated</p>
+            </div>
+        </div>
+        </div>
+        <div class="col">
+        <div class="card car-card h-100" data-value="van">
+            <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/Van_v1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Van</h5>
+            <p class="card-text">High end cars for 6 with top-rated</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

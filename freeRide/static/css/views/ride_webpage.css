@@ -1,0 +1,222 @@
+.main-block {
+    width: 100%;
+    height: 80vh;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    background-image: url('https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_2880,h_1288/v1653688612/assets/4e/98a67b-fa75-455d-b932-2d3ba478a4ed/original/DotCom_Update_Rider_bg2x.jpg');
+    /* Other background properties or styles */
+    object-fit: contain;
+}
+
+.custom-form {
+    position: absolute;
+    height: 525px;
+    width: 575px;
+    background-color: #ffffff;
+    left: 10%;
+    top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-header {
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    height: 25%;
+    width: 100%;
+    background-color: #fffbfb;
+}
+
+.custom-header > .custom-menu {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.custom-header > .animation {
+    position: absolute;
+    height: 3px;
+    background-color: #000000;
+    bottom: 75%;
+    width: 15%;
+    left: 9%;
+}
+
+.custom-header > div:nth-child(1).active~.animation {
+    transform: translateX(0%);
+    transition-duration: 0.6s;
+    transition-property: transform;
+}
+
+.custom-header > div:nth-child(2).active~.animation {
+    transform: translateX(223%);
+    transition-duration: 0.6s;
+    transition-property: transform;
+}
+
+.custom-header > div:nth-child(3).active~.animation {
+    transform: translateX(446%);
+    transition-duration: 0.6s;
+    transition-property: transform;
+}
+
+
+
+.custom-menuitem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 60%;
+}
+
+/* .custom-menuitem:first-child > svg {
+    transform: rotateY(180deg);
+} */
+
+.custom-menuitem > span {
+    font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+/* .custom-menuitem.active {
+    border-bottom: 3px solid;
+} */
+
+.custom-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.custom-body > .custom-info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-info > .custom-title {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height:35%;
+    width: 100%;
+    padding-left: 60px;
+}
+
+.custom-title > h1 {
+    font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 40px;
+    color: #000000;
+}
+
+.custom-info > .custom-form2 {
+    display: flex;
+    justify-content: start;
+    align-items: top;
+    height: 65%;
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 45px;
+}
+
+.custom-info2 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap: 10px;
+}
+
+.custom-info2 > label > input {
+    height: 50px;
+    width: 100%;
+    background-color: #EEEEEE;
+
+    &::placeholder {
+        text-align: left;
+        padding-left: 25px;
+    }
+}
+
+.custom-info2 > label:first-child > svg {
+    position: absolute;
+    left: 12%;
+    top: 54.5%;
+}
+
+.custom-info2 > label:nth-child(3) > svg {
+    position: absolute;
+    left: 12%;
+    bottom: 31%;
+}
+
+.custom-info2 > label:nth-child(3) {
+    margin-bottom: 40px; 
+}
+
+.custom-info2 > .custom-input {
+    position: absolute;
+    height: 61px;
+    left: 13.15%;
+    top: 56%;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-left: solid 1px #000000;
+    border-radius: 0px;
+    pointer-events: none;
+}
+
+/* .custom-info2 > label:nth-child(2) {
+    margin-bottom: 40px;
+} */
+
+.custom-buttons { 
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+
+.custom-buttons > button {
+    height: 50px;
+    width: 150px;
+    border: none;
+    font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.custom-buttons > button:nth-child(1) {
+    margin-right: 20px;
+}
+
+.custom-buttons > button:nth-child(2) {
+    background-color: #EEEEEE;
+}
+

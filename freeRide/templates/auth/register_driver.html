@@ -1,0 +1,91 @@
+{% extends 'baseAuth.html' %}
+
+{% block css %}
+{{ url_for('static', filename='css/auth/template_register.css') }}
+{% endblock %}
+
+{% block header %}
+Register_driver
+{% endblock %}
+
+{% block content %}
+<div class="container custom-main">
+    <div class="container custom-auth-driver">
+        <div class="custom-form">
+            <h4>Register</h4>
+            <form action="{{url_for('auth.register_driver')}}" method="post">
+                {{ form.hidden_tag() }}
+    
+                <div class="form-group m-3">
+                    {{ form.username(class="form-control custom_input", placeholder="username") }}
+                    {% for error in form.username.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+    
+                <div class="form-group m-3">
+                    {{ form.email(class="form-control custom_input", placeholder="email") }}
+                    {% for error in form.email.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+    
+                <div class="form-group m-3">
+                    {{ form.password(class="form-control custom_input", placeholder="password") }}
+                    {% for error in form.password.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+    
+                <div class="form-group m-3">
+                    {{ form.display_name(class="form-control custom_input", placeholder="display_name") }}
+                    {% for error in form.display_name.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group m-3">
+                    {{ form.vehicle_type(class="form-control custom_input", placeholder="vehicle_type") }}
+                    {% for error in form.vehicle_type.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+    
+                <div class="form-group m-3">
+                    {{ form.submit(class="btn btn-dark custom_submit_button") }}
+                </div>
+                
+                <!-- <div class="text-center"><a href="{{ url_for('auth.register_user') }}">Already have an account? Log In</a></div> -->
+            </form>
+        </div>
+
+        <div class="right">
+            <div class="custom-buttom-group">
+                <button type="button" class="btn btn-lg btn-custom">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo" class="custom-logo">
+                    <h3>Continue with Google</h3>
+                </button>
+                <button type="button" class="btn btn-lg btn-custom">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Google Logo" class="custom-logo">
+                    <h3>Continue with Apple</h3>
+                </button>
+                <button type="button" class="btn btn-lg btn-custom">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Google Logo" class="custom-logo">
+                    <h3>Continue with Facebook</h3>
+                </button>
+            </div>
+
+            <hr>
+
+            <div class="custom-footer">
+                <button class="btn btn-dark">Log in with qr code</button>
+                <p>By proceeding, you consent to get calls, WhatsApp or SMS messages, including by automated means, from Uber 
+                    and its affiliates to the number provided.
+
+                    This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

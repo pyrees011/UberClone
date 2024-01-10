@@ -1,0 +1,86 @@
+h1 {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left; 
+}
+
+.main-content {
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.main-sidebar {
+    margin-right: 40px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 15%;
+    height: 80vh; /* Adjust the height according to your needs */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.list-group-item {
+    line-height: 2;
+    justify-content: center;
+    text-align: left;
+    border: none;
+    height: 50px;
+}
+
+.list-group > a {
+    text-decoration: none;
+    color: #212529;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    border-left: solid 4px black;
+    background-color: #ece8e8;
+    color: black;
+}
+
+.list-group-item:hover {
+    z-index: 2;
+    background-color: #ece8e8;
+    color: black;
+}
+
+.mytrips {
+    padding: 10px;
+}
+
+.mytrips > h1 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.next-section {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+
+    & h1 {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 28px;
+        text-align: left; 
+    }
+}
+
+.middle-text {
+    margin-bottom: 40px;
+}
+
+.next-section > .button-group {
+    margin-left: auto;
+}

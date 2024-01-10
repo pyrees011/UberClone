@@ -1,0 +1,31 @@
+{% extends 'views_navbar.html' %}
+
+{% block css %} {{ url_for('static', filename='css/views/webpage.css') }} {% endblock %}
+
+{% block header %}webpage{% endblock %}
+
+{% block content %}
+
+<div class="main-block">
+<div class="container content">
+    <div class="container text-cont">
+        <h1 class="h1">
+            Go wherever you want
+            with Uber
+        </h1>
+        <div class="button-group">
+            <a href="{{ url_for('auth.register_driver') }}"><button class="btn btn-light">Register as a driver</button></a>
+            <a href="{{ url_for('auth.register_user') }}"><button class="btn btn-light">Register as a user</button></a>
+        </div>
+    </div>
+    <div class="container image">
+        <img src="{{ url_for('static', filename='images/uber.webp') }}" alt="uber">
+    </div>
+</div>
+</div>
+
+<div class="scroll-cont">
+    <h1 class="h1">How it works</h1>
+</div>
+
+{% endblock %}

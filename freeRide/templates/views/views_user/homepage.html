@@ -1,0 +1,101 @@
+{% extends 'views_navbar.html' %}
+
+{% block css %} {{ url_for('static', filename='css/views/homepage.css') }} {% endblock %}
+
+{% block scripts %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<!-- Include Google Maps JavaScript API with Places library -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDG6D9J_VSXaGDu8EmCY6a-EUjhSzRiRr0"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+type="text/css"
+/>
+<script src="../../static/js/views/homepage.js" defer></script>
+{% endblock %}
+
+{% block header %}homepage{% endblock %}
+
+{% block content %}
+
+<div class="main-block">
+    <div class="row grid-block">
+        <div class="custom-form col-4" id="search-form">
+            <form>
+                <h4>Get a Ride</h4>
+                <input type="hidden" class="form-control custom-input" id="user_id" name="user_id" value="{{ current_user.id }}">
+                <input type="hidden" class="form-control custom-input" id="car_type" name="car_type" value="green">
+                <input type="hidden" class="form-control custom-input" id="car_fare" name="car_fare" value="34.5">
+                <input type="text" class="form-control custom-input" placeholder="pickup location" id="pickup" name="pickup">
+                <input type="text" class="form-control custom-input" placeholder="dropoff location" id="drop" name="drop" value="">
+                <input type="datetime-local" class="form-control custom-input" placeholder="pickup time" id="pickup_time" name="pickup_time">
+                <button type="button" class="btn btn-dark custom-button" id="submit" disabled>Search</button>
+            </form>
+        </div>
+        <div class="custom-vehicle-type col-4" id="custom-vehicle-type">
+            <h1>Choose a ride</h1>
+            <h3>Recommended</h3>
+            <div class="card" style="width: 100%; height: 150px; margin: 10px; border:none ">
+                <div class="custom-card active" value="green">
+                    <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_Green.png" alt="">
+                    <div class="info">
+                        <h6>Green</h6>
+                        <p>faster, Affordable, everyday rides</p>
+                    </div>
+                    <div class="price-div" id="green_price">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="width: 100%; height: 150px; margin: 10px; border:none ">
+                <div class="custom-card" value="berline">
+                    <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/Black_v1.png" alt="">
+                    <div class="info">
+                        <h6>Berline</h6>
+                        <p>High end cars with top-rated</p>
+                    </div>
+                    <div class="price-div" id="berline_price">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="width: 100%; height: 150px; margin: 10px; border:none ">
+                <div class="custom-card" value="van">
+                    <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/Van_v1.png" alt="">
+                    <div class="info">
+                        <h6>Van</h6>
+                        <p>High end cars for 6 with top-rated</p>
+                    </div>
+                    <div class="price-div" id="van_price">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="card confirm">
+                <div class="card-body">
+                    <div class="btn-group dropup">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="payment-dropdown" value="cash">
+                            cash
+                        </button>
+                        <ul class="dropdown-menu" id="paymentOptions">
+                            <li><a class="dropdown-item" id="payment-dropdown-options" href="#" data-value="paypal">Paypal</a></li>
+                            <li><a class="dropdown-item" id="payment-dropdown-options" href="#" data-value="uberCash">Uber Cash</a></li>
+                            <li><a class="dropdown-item" id="payment-dropdown-options" href="#" data-value="cash">Cash</a></li>
+                        </ul>
+                    </div>
+                  <a class="btn btn-primary" id="book_ride">Book ride</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="custom-map col-8" id="map-div">
+            
+            <div id='map'></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

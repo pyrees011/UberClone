@@ -1,0 +1,237 @@
+{% extends 'views_navbar.html' %}
+
+{% block css %} 
+{{ url_for('static', filename='css/views/mytrip.css') }} 
+{% endblock %}
+{% block css2 %}
+{{ url_for('static', filename='css/views/payment.css') }} 
+{% endblock %}
+
+{% block scripts %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+type="text/css"
+/>
+<script src="../../static/js/views/payment.js" defer></script>
+{% endblock %}
+
+{% block header %}mytrips{% endblock %}
+
+{% block content %}
+<div class="container main-page">
+    <div class="main-content row">
+        <div class="main-sidebar col-2 sticky-top">
+            <ul class="list-group list-group-flush">
+                <a href="{{ url_for('views_user.homepage') }}" class="list-group-item-link">
+                    <li class="list-group-item">Ride now</li>
+                </a>
+                <a href="{{ url_for('views_user.mytrip') }}" class="list-group-item-link">
+                    <li class="list-group-item">my trips</li>
+                </a>
+                <a href="{{ url_for('views_user.payment') }}" class="list-group-item-link">
+                    <li class="list-group-item active">wallet</li>
+                </a>
+                <a href="{{ url_for('views_user.tax_profile') }}" class="list-group-item-link">
+                    <li class="list-group-item">Tax profile</li>
+                </a>
+                <a href="{{ url_for('views_user.profile_settings') }}" class="list-group-item-link">
+                    <li class="list-group-item">settings</li>
+                </a>
+            </ul>
+        </div>
+        <div class="mytrips col-9">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">uber cash</h5>
+                    <p class="card-text" style="color: black;">€ 0.00</p>
+                </div>
+            </div>
+
+            <div class="payment-methods container">
+                <h3>payment methods</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3 payment-card visa" style="max-width: 480px;">
+                            <div class="row g-0">
+                                <div class="col">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Visa</h5>
+                                        <p class="card-text">**** 7356</p>                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-3 payment-card cash" style="max-width: 480px;">
+                            <div class="row g-0">
+                                <div class="col">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Cash</h5>                                 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div type= "button" class="add-payment container" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                        <h5>add payment methods</h5>
+                    </div>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header" id="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Payment options</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" id="modal-body">
+                                    <div type= "button" id="option" name="paypal" class="add-payment container paypal" data-bs-target="#staticBackdrop" style="margin: 10px; border: none;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 48 48">
+                                            <path fill="#0d62ab" d="M18.7,13.767l0.005,0.002C18.809,13.326,19.187,13,19.66,13h13.472c0.017,0,0.034-0.007,0.051-0.006	C32.896,8.215,28.887,6,25.35,6H11.878c-0.474,0-0.852,0.335-0.955,0.777l-0.005-0.002L5.029,33.813l0.013,0.001	c-0.014,0.064-0.039,0.125-0.039,0.194c0,0.553,0.447,0.991,1,0.991h8.071L18.7,13.767z"></path><path fill="#199be2" d="M33.183,12.994c0.053,0.876-0.005,1.829-0.229,2.882c-1.281,5.995-5.912,9.115-11.635,9.115	c0,0-3.47,0-4.313,0c-0.521,0-0.767,0.306-0.88,0.54l-1.74,8.049l-0.305,1.429h-0.006l-1.263,5.796l0.013,0.001	c-0.014,0.064-0.039,0.125-0.039,0.194c0,0.553,0.447,1,1,1h7.333l0.013-0.01c0.472-0.007,0.847-0.344,0.945-0.788l0.018-0.015	l1.812-8.416c0,0,0.126-0.803,0.97-0.803s4.178,0,4.178,0c5.723,0,10.401-3.106,11.683-9.102	C42.18,16.106,37.358,13.019,33.183,12.994z"></path><path fill="#006fc4" d="M19.66,13c-0.474,0-0.852,0.326-0.955,0.769L18.7,13.767l-2.575,11.765	c0.113-0.234,0.359-0.54,0.88-0.54c0.844,0,4.235,0,4.235,0c5.723,0,10.432-3.12,11.713-9.115c0.225-1.053,0.282-2.006,0.229-2.882	C33.166,12.993,33.148,13,33.132,13H19.66z"></path>
+                                            </svg>
+                                        <h5>PayPal</h5>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" style="margin-left: auto;"><path d="m9 18 6-6-6-6"/></svg>
+                                    </div>
+                                    <div type= "button" id="option" name="voucher" class="add-payment container voucher" data-bs-target="#staticBackdrop" style="margin: 10px; border: none;">                                        
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 48 48">
+                                            <path fill="#373837" d="M4,23.5c0.197-2.547-0.495-6.445-0.5-9c-0.002-1.242,0.19-1.914,0.19-2.746	c0-0.384-0.19-0.465-0.19-1.254c0-1.617,0.025-3.21,1-4.5C5.48,4.703,7.375,3.5,9,3.5c2,0,3.375-0.04,5,0	c3.127,0.078,5.797,0.278,8.31,0.247c1.188-0.014,2.341-0.278,3.491-0.265c2.314,0.025,4.606,0.286,7.174,0.265	C34.528,3.735,36.2,3.5,38,3.5c2.5,0,3.217,0.358,3.5,0.5c1,0.5,1.87,1.675,2,2c1,2.5,1,5.519,1,9.5c0,3.171-0.505,6.582-0.5,10	c0.006,4.126,0.522,8.263,0.5,12c-0.008,1.306-0.307,3.061-0.92,4.215c-0.734,1.383-2.215,2.245-3.74,2.598	c-0.93,0.215-1.883,0.201-2.84,0.187c-0.613-0.009-1.227,0.02-1.837-0.016c-6.402-0.379-11.615-0.228-17.953-0.176	C16.707,44.312,15.509,44.5,15,44.5c-4.5,0-7,0-9.5-1.5c-0.262-0.157-1.363-1.726-1.5-2c-0.5-1-0.5-3.061-0.5-3.5	C3.5,31.5,3.679,27.638,4,23.5z"></path><path fill="#010101" d="M37.701,45.007c-0.235,0-0.469-0.003-0.701-0.007c-0.23-0.004-0.451-0.001-0.672,0	c-0.401,0.004-0.798,0.006-1.194-0.017c-5.289-0.313-9.675-0.265-14.752-0.207l-3.168,0.032c-0.234,0.002-0.628,0.047-1.024,0.091	C15.733,44.95,15.272,45,15,45c-4.603,0-7.139,0-9.757-1.571c-0.414-0.248-1.576-1.976-1.69-2.205C3.096,40.31,3,38.694,3,37.5	c0-6.274,0.2-10.15,0.502-14.039l0,0c0.11-1.425-0.069-3.317-0.243-5.147C3.127,16.922,3.002,15.607,3,14.501	c-0.002-0.717,0.059-1.25,0.112-1.72c0.04-0.353,0.078-0.675,0.078-1.027c0-0.08-0.014-0.13-0.049-0.245	C3.082,11.31,3,11.039,3,10.5c0-1.567,0-3.344,1.101-4.801C5.114,4.357,7.122,3,9,3c0.707,0,1.336-0.005,1.925-0.01	c1.083-0.009,2.033-0.017,3.088,0.01c1.217,0.03,2.364,0.079,3.461,0.125c1.7,0.072,3.303,0.14,4.83,0.122	c0.543-0.007,1.099-0.07,1.635-0.131c0.607-0.069,1.234-0.14,1.867-0.134c1.041,0.011,2.054,0.068,3.125,0.128	c1.293,0.072,2.624,0.151,4.04,0.137c0.709-0.006,1.443-0.059,2.222-0.115C36.092,3.067,37.022,3,38,3	c2.618,0,3.393,0.387,3.724,0.553c1.157,0.579,2.084,1.869,2.24,2.262C45,8.404,45,11.535,45,15.5c0,1.567-0.119,3.151-0.244,4.827	C44.629,22.02,44.497,23.77,44.5,25.5c0.003,2.038,0.133,4.096,0.258,6.086c0.131,2.069,0.254,4.022,0.242,5.917	c-0.007,1.215-0.268,3.108-0.979,4.446c-0.734,1.383-2.218,2.422-4.069,2.851C39.203,44.973,38.446,45.007,37.701,45.007z M36.737,43.998c0.09,0,0.18,0,0.27,0.002c0.956,0.014,1.852,0.027,2.72-0.175c1.57-0.363,2.813-1.218,3.412-2.345	c0.585-1.103,0.854-2.795,0.861-3.983c0.011-1.86-0.11-3.797-0.24-5.848c-0.126-2.005-0.256-4.079-0.26-6.148	c-0.003-1.769,0.13-3.538,0.259-5.249C43.883,18.595,44,17.03,44,15.5c0-4.008,0-6.904-0.964-9.314	c-0.083-0.205-0.874-1.295-1.76-1.738C41.032,4.325,40.382,4,38,4c-0.941,0-1.854,0.066-2.735,0.13	c-0.795,0.057-1.545,0.112-2.286,0.118c-1.444,0.009-2.795-0.065-4.104-0.139c-1.061-0.06-2.062-0.116-3.079-0.127	c-0.595-0.014-1.14,0.06-1.744,0.128c-0.562,0.064-1.142,0.13-1.736,0.138c-1.547,0.02-3.171-0.05-4.885-0.123	C16.34,4.079,15.198,4.03,13.987,4c-1.042-0.026-1.984-0.019-3.054-0.01C10.342,3.995,9.71,4,9,4C7.521,4,5.753,5.17,4.899,6.301	C4,7.491,4,9.021,4,10.5c0,0.391,0.051,0.559,0.1,0.72c0.042,0.142,0.091,0.303,0.091,0.534c0,0.391-0.04,0.748-0.085,1.139	C4.053,13.359,3.998,13.84,4,14.499c0.002,1.06,0.125,2.352,0.254,3.72c0.178,1.873,0.361,3.809,0.244,5.319	C4.199,27.404,4,31.258,4,37.5c0,1.514,0.163,2.708,0.447,3.276c0.129,0.257,1.11,1.63,1.333,1.81C8.139,44,10.575,44,15,44	c0.247,0,0.665-0.048,1.079-0.094c0.437-0.048,0.869-0.095,1.127-0.097l3.164-0.032c5.099-0.057,9.498-0.106,14.822,0.209	c0.376,0.022,0.751,0.019,1.127,0.015C36.459,44,36.598,43.998,36.737,43.998z"></path><path fill="#fff" d="M17.279,28.489c0.006,0.276-0.213,0.505-0.489,0.511c-0.003,0-0.007,0-0.011,0	c-0.271,0-0.494-0.217-0.5-0.489c-0.006-0.259-0.023-0.519-0.044-0.783c-0.063,0.076-0.115,0.159-0.186,0.231	C15.382,28.643,14.513,29,14,29c-2.073,0-2.645-0.202-3.398-1.198c-0.396-0.523-0.573-1.206-0.596-2.285	C9.999,25.209,9.999,24.87,9.999,24.5c0-0.251-0.025-0.463-0.052-0.68c-0.029-0.251-0.059-0.51-0.063-0.828	C9.878,22.49,9.988,19.786,10,19.479c0.013-0.276,0.263-0.5,0.521-0.479c0.275,0.011,0.49,0.244,0.479,0.52	c-0.042,1.027-0.12,3.072-0.115,3.459c0.003,0.278,0.03,0.504,0.056,0.724C10.971,23.958,11,24.205,11,24.5	c0,0.362,0,0.693,0.007,0.996c0.018,0.841,0.139,1.366,0.394,1.703C11.864,27.814,12.005,28,14,28c0.157,0,0.79-0.182,1.335-0.739	c0.477-0.487,0.71-1.086,0.694-1.783c0-0.006,0.003-0.012,0.003-0.018c-0.023-0.34-0.041-0.682-0.037-1.027	c0.002-0.203,0.024-0.749,0.05-1.362c0.035-0.83,0.075-1.786,0.074-2.155l0.002-0.53c0.003-0.285,0.005-0.551-0.003-0.875	c-0.006-0.276,0.213-0.505,0.488-0.511c0.252-0.007,0.506,0.213,0.512,0.489c0.008,0.334,0.006,0.61,0.003,0.905l-0.002,0.52	c0.001,0.376-0.039,1.352-0.074,2.199c-0.025,0.599-0.048,1.132-0.05,1.33c-0.007,0.724,0.069,1.468,0.143,2.188	C17.201,27.241,17.266,27.872,17.279,28.489z M26,26c0,2.289-2.565,3-3.5,3h-0.17c-0.051,0-0.102,0-0.151,0	c-0.421,0-0.769-0.011-1.122-0.121c-0.436-0.136-1.067-0.68-1.143-0.752c-0.007-0.001-0.044-0.017-0.086-0.038	c-0.126-0.063-0.293-0.153-0.465-0.287c-0.023,0.255-0.041,0.502-0.034,0.73c0.008,0.276-0.21,0.506-0.485,0.514	c-0.005,0-0.01,0-0.015,0c-0.27,0-0.492-0.214-0.5-0.486c-0.012-0.427,0.037-0.879,0.084-1.316c0.045-0.411,0.091-0.835,0.087-1.239	c-0.005-0.501-0.023-0.908-0.042-1.313c-0.021-0.456-0.042-0.908-0.044-1.48c-0.001-0.107,0.021-0.529,0.043-0.95	c0.021-0.394,0.042-0.787,0.042-0.886L18.494,20.6c-0.005-0.342-0.008-0.591,0.006-1.113c0.008-0.275,0.249-0.488,0.513-0.487	c0.276,0.007,0.494,0.237,0.487,0.513c-0.014,0.503-0.011,0.744-0.007,1.074l0.006,0.786c0.001,0.104-0.021,0.522-0.043,0.941	c-0.009,0.174-0.018,0.343-0.025,0.492c0.359-0.469,0.81-0.914,1.578-1.142c0.365-0.109,0.756-0.165,1.162-0.165	c1.295,0,2.188,0.796,2.604,1.271C25.624,23.736,26,24.238,26,26z M25,26c0-1.459-0.246-1.739-0.976-2.569	c-0.246-0.28-0.919-0.931-1.854-0.931c-0.31,0-0.604,0.042-0.876,0.123c-0.543,0.162-0.855,0.478-1.184,0.936	c-0.412,0.572-0.612,1.043-0.612,1.441l0.001,0.5c0,1.308,0.448,1.532,0.775,1.695c0.115,0.058,0.235,0.117,0.336,0.216	c0.116,0.113,0.582,0.464,0.744,0.514C21.603,28.003,21.904,28,22.328,28H22.5C22.828,28,25,27.627,25,26z M33.433,27.47	c0-0.276-0.214-0.549-0.49-0.549c-0.275,0-0.489,0.175-0.489,0.452C32.344,27.555,31.524,28,30.5,28	c-1.044,0-1.737-0.313-2.12-0.958c-0.168-0.282-0.313-0.579-0.362-1.221c0.564,0.008,1.164,0.027,1.763,0.046	c0.781,0.025,1.563,0.051,2.271,0.051c0.014,0,0.027,0,0.037,0c0.4,0,0.821,0.073,0.825,0.074c0.131,0.024,0.273-0.009,0.383-0.089	c0.11-0.081,0.183-0.204,0.2-0.339c0.027-0.214,0.154-1.311-0.054-1.859C32.604,21.5,31.389,21.5,30.5,21.5	c-0.964,0-1.48,0.319-1.789,0.51c-0.047,0.029-0.088,0.055-0.125,0.074c-0.274,0.14-0.543,0.347-0.799,0.616	C27,23.526,27,24.272,27,25.318l0,0l0,0l0,0c0,1.139,0.191,1.682,0.521,2.235C28.091,28.514,29.094,29,30.5,29	C31.856,29,33.433,28.332,33.433,27.47z M32.079,24.918c-0.705,0.015-1.485-0.024-2.267-0.05c-0.615-0.02-1.23-0.04-1.81-0.047	c0.015-0.644,0.091-0.994,0.509-1.432c0.178-0.187,0.355-0.327,0.529-0.415c0.059-0.03,0.123-0.069,0.195-0.114	c0.247-0.152,0.585-0.36,1.265-0.36c0.79,0,1.415,0,2.007,1.56c0.054,0.141,0.063,0.504,0.042,0.88	c-0.143-0.013-0.302-0.021-0.46-0.021C32.086,24.918,32.083,24.918,32.079,24.918z M38.506,21.664c-0.004,0-0.008,0-0.013,0	c-0.017-0.002-0.067-0.018-0.104-0.03c-0.151-0.046-0.376-0.119-0.684-0.075c-0.514,0.075-1.194,0.226-1.563,0.555	c-0.038,0.033-0.098,0.091-0.15,0.139c0.001-0.069-0.001-0.136,0.006-0.21c0.024-0.275-0.179-0.518-0.454-0.542	c-0.27-0.023-0.519,0.179-0.542,0.454c-0.028,0.315-0.012,0.592,0.007,0.868c0.015,0.228,0.03,0.456,0.008,0.715	c-0.029,0.324,0.012,0.791,0.052,1.242c0.021,0.237,0.04,0.458,0.044,0.618c0.01,0.427,0.046,2.4,0.032,3.091	c-0.005,0.276,0.214,0.504,0.49,0.51c0.003,0,0.007,0,0.01,0c0.271,0,0.494-0.217,0.5-0.49c0.014-0.701-0.022-2.7-0.032-3.134	c-0.004-0.177-0.025-0.421-0.048-0.683c-0.017-0.191-0.035-0.405-0.047-0.601c0.007-0.024,0.02-0.045,0.023-0.071	c0.077-0.556,0.574-0.991,0.81-1.198c0.079-0.065,0.44-0.193,0.998-0.274c0.078-0.011,0.129,0.004,0.239,0.039	c0.113,0.035,0.261,0.076,0.425,0.075c0.275-0.007,0.497-0.236,0.49-0.512C38.996,21.879,38.776,21.664,38.506,21.664z"></path>
+                                            </svg>
+                                        <h5>add Voucher Code</h5>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" style="margin-left: auto;"><path d="m9 18 6-6-6-6"/></svg>
+                                    </div>
+                                    <div type= "button" id="option" name="credit" class="add-payment container credit" data-bs-target="#staticBackdrop" style="margin: 10px; border: none;">                                        
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                                        <h5>Credit or Debit card</h5>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" style="margin-left: auto;"><path d="m9 18 6-6-6-6"/></svg>
+                                    </div>
+                                </div>
+                                <div class="modal-footer" id="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- paypal Modal -->
+                    <div class="modal fade" id="paypalFormModal" tabindex="-1" aria-labelledby="paypalFormModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="paypalFormModalLabel">PayPal Payment Form</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h1>Add PayPal</h1>
+                                    <p>You will be re-directed to PayPal to verify your account.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary back">Back</button>
+                                    <button type="button" class="btn btn-primary" onclick="submitPayPalForm()">PayPal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- vocher Modal -->
+                    <div class="modal fade" id="voucherFormModal" tabindex="-1" aria-labelledby="voucherFormModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="voucherFormModalLabel">PayPal Payment Form</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-logo">
+                                    <svg viewBox="0 0 384 128" fill="none" xmlns="http://www.w3.org/2000/svg"><rect opacity="0.05" width="384" height="128" fill="#276EF1"></rect><mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="384" height="128"><rect width="384" height="128" fill="#276EF1"></rect></mask><g mask="url(#mask0)"><path d="M108.723 133.709L125.688 116.733L142.627 133.687L125.662 150.664L108.723 133.709Z" fill="#000000" fill-opacity="0.7"></path><rect width="15.6151" height="15.6367" transform="matrix(0.965822 0.259206 -0.258433 0.966029 307.041 23)" fill="#276EF1" fill-opacity="0.1"></rect><rect width="15.6151" height="15.6367" transform="matrix(-0.5 -0.866025 0.865625 -0.500692 98.6971 84.2527)" fill="#276EF1" fill-opacity="0.1"></rect><rect width="16" height="16" transform="matrix(0.952869 -0.303382 0.302502 0.953149 264 118.785)" fill="#276EF1" fill-opacity="0.1"></rect><ellipse cx="253.108" cy="25.1224" rx="9.10781" ry="9.12239" fill="white"></ellipse><circle cx="176.5" cy="-2.5" r="11.5" fill="#000000" fill-opacity="0.5"></circle><circle cx="206" cy="116" r="3" fill="#000000" fill-opacity="0.1"></circle><circle cx="352" cy="56" r="4" fill="#276EF1"></circle><circle cx="82" cy="104" r="4" fill="white"></circle><path d="M270.528 62.4878L281.404 69.2746L270.098 75.3156L270.528 62.4878Z" fill="white"></path><path d="M48.3146 57.6059L59.4083 64.0313L48.3067 70.4408L48.3146 57.6059Z" fill="#276EF1" fill-opacity="0.1"></path><path d="M307.628 80.4378L323.876 86.3231L310.663 97.4739L307.628 80.4378Z" fill="#000000" fill-opacity="0.3"></path><path d="M88.6558 20.6905L101.879 31.8156L85.6327 37.7288L88.6558 20.6905Z" fill="#276EF1" fill-opacity="0.7"></path><rect x="132" y="24" width="120" height="80" rx="4" fill="#276EF1" fill-opacity="0.4"></rect><path d="M212 24H248C250.209 24 252 25.7909 252 28V100C252 102.209 250.209 104 248 104H172L212 24Z" fill="#276EF1" fill-opacity="0.7"></path><rect x="156" y="24" width="4" height="80" fill="white"></rect><rect x="132" y="48" width="120" height="4" fill="white"></rect><path d="M158 61.8837C156.697 61.8837 155.641 60.5905 154.479 60.2411C153.282 59.8566 151.627 60.2411 150.641 59.5071C149.62 58.7732 149.514 57.0957 148.775 56.1171C148.035 55.1036 146.486 54.5094 146.098 53.2862C145.711 52.1329 146.591 50.7349 146.591 49.4418C146.591 48.1487 145.711 46.7508 146.098 45.5974C146.486 44.4092 148.035 43.7801 148.775 42.7666C149.514 41.7531 149.62 40.1105 150.641 39.3765C151.662 38.6426 153.282 39.027 154.479 38.6426C155.641 38.2582 156.732 37 158 37C159.303 37 160.359 38.2931 161.521 38.6426C162.718 39.027 164.373 38.6426 165.359 39.3765C166.38 40.1105 166.486 41.788 167.225 42.7666C167.965 43.7801 169.514 44.3742 169.902 45.5974C170.289 46.7508 169.409 48.1487 169.409 49.4418C169.409 50.7349 170.289 52.1329 169.902 53.2862C169.514 54.4745 167.965 55.1036 167.225 56.1171C166.486 57.1306 166.38 58.7732 165.359 59.5071C164.338 60.2411 162.718 59.8566 161.521 60.2411C160.394 60.6255 159.303 61.8837 158 61.8837Z" fill="#276EF1"></path><path d="M163.106 49.4421V67.7204L158 64.575L152.93 67.7204V49.4421H163.106Z" fill="#276EF1"></path><path d="M163.106 47.7996H152.93V49.4422H163.106V47.7996Z" fill="#276EF1"></path><path d="M158 57.026C162.22 57.026 165.641 53.6306 165.641 49.4421C165.641 45.2536 162.22 41.8582 158 41.8582C153.78 41.8582 150.359 45.2536 150.359 49.4421C150.359 53.6306 153.78 57.026 158 57.026Z" fill="white"></path><path d="M158 57.026C162.22 57.026 165.641 53.6306 165.641 49.4421C165.641 45.2536 162.22 41.8582 158 41.8582C153.78 41.8582 150.359 45.2536 150.359 49.4421C150.359 53.6306 153.78 57.026 158 57.026Z" fill="#276EF1" fill-opacity="0.4"></path><path d="M157.999 54.509C160.819 54.509 163.105 52.2401 163.105 49.4414C163.105 46.6426 160.819 44.3738 157.999 44.3738C155.18 44.3738 152.894 46.6426 152.894 49.4414C152.894 52.2401 155.18 54.509 157.999 54.509Z" fill="white"></path></g></svg>
+                                </div>
+                                <div class="modal-body" style="padding-left: 25px;">
+                                    <!-- voucher Payment Form content -->
+                                    <form id="VoucherPaymentForm">
+                                        <h1 style="margin-top: 20px; margin-bottom: 40px; font-size: 48px;">Add GiftCard</h1>
+                                        <!-- Your voucher form fields here -->
+                                        <input class="voucher_code" type="text" id="code" name="code" placeholder="Enter your code">
+                                        <!-- Other voucher fields... -->
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary back">Back</button>
+                                    <button type="button" class="btn btn-primary" onclick="submitVoucherForm()">verify</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- credit Modal -->
+                    <div class="modal fade" id="creditFormModal" tabindex="-1" aria-labelledby="creditFormModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="creditFormModalLabel">credit/debit Payment Form</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-top">
+                                    <h1>Add credit or debit card</h1>
+                                </div>
+                                <div class="modal-body" style="padding-left: 25px;">
+                                    <!-- PayPal Payment Form content -->
+                                    <form id="creditPaymentForm">
+                                        <div class="mb-3">
+                                            <label for="card-number" class="form-label">card number</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="card-number" aria-describedby="basic-addon3 basic-addon4">
+                                            </div>
+                                        </div>
+                                        <div class="row g-3 mb-3">
+                                            <div class="col-md-6">
+                                                <label for="expiry" class="form-label">expiry date</label>
+                                                <input type="text" pattern="\d{2}/\d{2}" class="form-control" id="expiry" placeholder="MM/YY">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="cvv" class="form-label">CVV</label>
+                                                <input type="number" class="form-control" id="cvv">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="card-holder" class="form-label">card holder</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="card-holder" aria-describedby="basic-addon3 basic-addon4">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary back">Back</button>
+                                    <button type="button" class="btn btn-primary" onclick="submitCreditForm()">verify</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="profile-heading">
+                        <h1>Profiles</h1>
+                    </div>
+
+                    <div class="container profile">
+                        <div class="profile-logo">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="filled" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                        </div>
+                        <div class="add-payment-profile container">
+                            <h5>Personal</h5>
+                            <p>visa - xxxx</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+            
+{% endblock %}

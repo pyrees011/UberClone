@@ -1,0 +1,28 @@
+.main-block {
+    display: flex;
+    gap: 15px;
+    height: 100vh;
+    width: 100vw;
+}
+
+.custom-map {
+    position: sticky;
+    position: -webkit-sticky;
+    overflow-x: hidden;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+
+}
+
+#map {
+    height: 90%;
+    width: 100%;
+}
+
+.main-block > .row > .card > .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

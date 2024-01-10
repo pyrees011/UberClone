@@ -1,0 +1,30 @@
+.cover_block {
+    display: flex;
+
+}
+
+
+.main-cont-car-info {
+    display: flex;
+    flex-direction: column;
+    /* height: 50vh; */
+    justify-content: center;
+    align-items: center;
+    margin: 100px;
+}
+
+.main-cont-car-info > .row {
+    height: 30%;
+}
+
+.car-card.active {
+    border: solid 5px black;
+}
+
+.cover_block {
+    padding: 20px;
+}
+
+.driver_profile {
+    padding: 10px;
+}

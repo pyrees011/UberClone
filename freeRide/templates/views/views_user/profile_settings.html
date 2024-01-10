@@ -1,0 +1,96 @@
+{% extends 'views_navbar.html' %}
+
+{% block css %} 
+{{ url_for('static', filename='css/views/mytrip.css') }} 
+{% endblock %}
+{% block css2 %}
+{{ url_for('static', filename='css/views/profile_settings.css') }} 
+{% endblock %}
+
+{% block scripts %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+type="text/css"
+/>
+<script src="../../static/js/views/payment.js" defer></script>
+{% endblock %}
+
+{% block header %}profile settings{% endblock %}
+
+{% block content %}
+<div class="container main-page">
+    <div class="main-content row">
+        <div class="main-sidebar col-2 sticky-top">
+            <ul class="list-group list-group-flush">
+                {% block sidebar %}
+                <a href="{{ url_for('views_user.homepage') }}" class="list-group-item-link">
+                    <li class="list-group-item">Ride now</li>
+                </a>
+                <a href="{{ url_for('views_user.mytrip') }}" class="list-group-item-link">
+                    <li class="list-group-item">my trips</li>
+                </a>
+                <a href="{{ url_for('views_user.payment') }}" class="list-group-item-link">
+                    <li class="list-group-item">wallet</li>
+                </a>
+                <a href="{{ url_for('views_user.tax_profile') }}" class="list-group-item-link">
+                    <li class="list-group-item">Tax profile</li>
+                </a>
+                <a href="{{ url_for('views_user.profile_settings') }}" class="list-group-item-link">
+                    <li class="list-group-item active">settings</li>
+                </a>
+                {% endblock %}
+            </ul>
+        </div>
+
+        {% block middle %}
+        <div class="settings-page container col-6">
+            <div class="location-settings">
+                <h3>Location</h3>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+            <div class="language-settings">
+                <h3>language</h3>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+
+            <button class="btn custom-btn" disabled>save changes</button>
+
+            <hr>
+
+            <div class="logout-box">
+                <h3>Authorized applications</h3>
+                <p>You do not have any authorized applications</p>
+                <a href="{{ url_for('auth.logout') }}" class="btn btn-custom" tabindex="-1" role="button" aria-disabled="true">logout</a>
+            </div>
+        </div>
+        {% endblock %}
+
+        <div class="ride-go-back container col-3">
+            <div class="card" style="width: 100%;">
+                <img src="https://d3i4yxtzktqr9n.cloudfront.net/riders-web-v2/a95297b322004db9.svg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Get a ride in minutes</h5>
+                  <p class="card-text">Book an Uber from a web browser, no app install necessary.</p>
+                  <a href="{{ url_for('views_user.homepage') }}" class="btn btn-dark">Request a ride</a>
+                </div>
+              </div>
+        </div>
+
+    </div>
+</div>
+            
+{% endblock %}

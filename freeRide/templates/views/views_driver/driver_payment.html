@@ -1,0 +1,106 @@
+{% extends 'views_navbar.html' %}
+
+{% block css %} 
+{{ url_for('static', filename='css/views/mytrip.css') }} 
+{% endblock %}
+{% block css2 %}
+{{ url_for('static', filename='css/views/payment.css') }} 
+{% endblock %}
+
+{% block scripts %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+type="text/css"
+/>
+<script src="../../static/js/views/payment.js" defer></script>
+{% endblock %}
+
+{% block header %}driver_mytrips{% endblock %}
+
+{% block content %}
+<div class="container main-page">
+    <div class="main-content row">
+        <div class="main-sidebar col-2 sticky-top">
+            <ul class="list-group list-group-flush">
+                <a href="{{ url_for('views_driver.driver_homepage') }}" class="list-group-item-link">
+                    <li class="list-group-item">Ride now</li>
+                </a>
+                <a href="{{ url_for('views_driver.driver_mytrip') }}" class="list-group-item-link">
+                    <li class="list-group-item">my trips</li>
+                </a>
+                <a href="{{ url_for('views_driver.driver_payment') }}" class="list-group-item-link">
+                    <li class="list-group-item active">wallet</li>
+                </a>
+                <a href="{{ url_for('views_driver.driver_tax_profile') }}" class="list-group-item-link">
+                    <li class="list-group-item">Tax profile</li>
+                </a>
+                <a href="{{ url_for('views_driver.driver_profile_settings') }}" class="list-group-item-link">
+                    <li class="list-group-item">settings</li>
+                </a>
+            </ul>
+        </div>
+        <div class="mytrips col-9">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">uber cash</h5>
+                    <p class="card-text" style="color: black;">€ 0.00</p>
+                </div>
+            </div>
+
+            <div class="payment-methods container">
+                <h3>payment methods</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3 payment-card visa" style="max-width: 480px;">
+                            <div class="row g-0">
+                                <div class="col">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">some text</p>                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-3 payment-card cash" style="max-width: 480px;">
+                            <div class="row g-0">
+                                <div class="col">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">some text</p>                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="add-payment container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                        <h5>add payment methods</h5>
+                    </div>
+
+                    <div class="profile-heading">
+                        <h1>Profiles</h1>
+                    </div>
+
+                    <div class="container profile">
+                        <div class="profile-logo">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="filled" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                        </div>
+                        <div class="add-payment-profile container">
+                            <h5>Personal</h5>
+                            <p>visa - xxxx</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+            
+{% endblock %}

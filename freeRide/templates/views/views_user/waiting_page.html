@@ -1,0 +1,25 @@
+{% extends 'views_navbar.html' %}
+
+{% block css %} {{ url_for('static', filename='css/views/waiting_page.css') }} {% endblock %}
+
+{% block scripts %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<!-- Include Google Maps JavaScript API with Places library -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDG6D9J_VSXaGDu8EmCY6a-EUjhSzRiRr0"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+type="text/css"
+/>
+<script src="../../static/js/views/waiting_page.js" defer></script>
+{% endblock %}
+
+{% block header %}waiting_page{% endblock %}
+
+{% block content %}
+
+this is the waiting main-page
+
+{% endblock %}

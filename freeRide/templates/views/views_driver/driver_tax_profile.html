@@ -1,0 +1,139 @@
+{% extends 'views_navbar.html' %}
+
+{% block css %} {{ url_for('static', filename='css/views/mytrip.css') }} {% endblock %}
+
+{% block scripts %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+type="text/css"
+/>
+<script src="../../static/js/views/mytrip.js" defer></script>
+{% endblock %}
+
+{% block header %}mytrips{% endblock %}
+
+{% block content %}
+<div class="container main-page">
+    <div class="main-content row">
+        <div class="main-sidebar col-2 sticky-top">
+            <ul class="list-group list-group-flush">
+                <a href="{{ url_for('views_driver.driver_homepage') }}" class="list-group-item-link">
+                    <li class="list-group-item">Ride now</li>
+                </a>
+                <a href="{{ url_for('views_driver.driver_mytrip') }}" class="list-group-item-link">
+                    <li class="list-group-item active">my trips</li>
+                </a>
+                <a href="{{ url_for('views_driver.driver_payment') }}" class="list-group-item-link">
+                    <li class="list-group-item">wallet</li>
+                </a>
+                <a href="{{ url_for('views_driver.driver_tax_profile') }}" class="list-group-item-link">
+                    <li class="list-group-item">Tax profile</li>
+                </a>
+                <a href="{{ url_for('views_driver.driver_profile_settings') }}" class="list-group-item-link">
+                    <li class="list-group-item">settings</li>
+                </a>
+            </ul>
+        </div>
+        <div class="mytrips col-9">
+            <h1>upcoming</h1>
+            <div class="card mb-3">
+                <img src="	https://d3i4yxtzktqr9n.cloudfront.net/riders-web-v2/a95297b322004db9.svg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+
+            <div class="past-section">
+                <div class="next-section">
+                    <h1>Past</h1>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-light">all rides</button>
+                        <button type="button" class="btn btn-light">october</button>
+                        <button type="button" class="btn btn-light">september</button>
+                    </div>
+                </div>
+                <h1 class="middle-text">Sep 20 - sep 30</h1>
+                <div class="past-rides">
+                    <div class="card mb-3">
+                        <img src="https://d3i4yxtzktqr9n.cloudfront.net/riders-web-v2/a95297b322004db9.svg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3" style="max-width: 480px;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_Green.png" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>                                  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3" style="max-width: 480px;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_Green.png" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>                                  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3" style="max-width: 480px;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_Green.png" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>                                  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3" style="max-width: 480px;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_Green.png" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>                                  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

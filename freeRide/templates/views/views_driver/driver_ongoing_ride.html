@@ -1,0 +1,45 @@
+{% extends 'driver_views_navbar.html' %}
+
+{% block css %} {{ url_for('static', filename='css/views/driver_homepage.css') }} {% endblock %}
+
+{% block scripts %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+type="text/css"
+/>
+<script src="../../static/js/views/homepage.js" defer></script>
+{% endblock %}
+
+{% block header %}driver_homepage{% endblock %}
+
+{% block content %}
+
+<div class="main-block">
+  <div class="row grid-block col-4" >
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Rider name - {{ user_info.display_name }}</h5>
+          <p class="card-text">rider email - {{ user_info.email }}</p>
+          <p class="card-text">rider phone - {{ user_info.phone }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">pickup - {{ ride_details.pickup }}</li>
+          <li class="list-group-item">drop - {{ ride_details.drop }}</li>
+          <li class="list-group-item">ride fare - {{ ride_details.ride_fare }}</li>
+        </ul>
+        <div class="card-body">
+          <button class="btn btn-dark" id="over_ride" onclick="over_ride('{{ ride_details.request_id }}', '{{ ride_details.car_type }}')">over ride</button>
+        </div>
+      </div>
+  </div>
+  <div class="custom-map col-8" id="map-div">
+      
+      <div id='map'></div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+Uber App Documentation
+Introduction
+The Uber app is a transportation service platform developed using Flask, a Python web framework. 
+This application allows users to register, log in, book rides, and facilitates driver management.
+
+Technologies Used :
+Backend Framework: Flask
+frontend : html, css, javascript
+
+Database Management:
+Authentication (User and Driver Registration/Login): SQLite with SQLAlchemy
+Other Application Data: MongoDB
+
+Features
+Authentication
+
+User Registration/Login:
+Implemented using SQLite with SQLAlchemy.
+Registration involves capturing user details and securely storing them in SQLite.
+Login process authenticates users against stored credentials.
+
+Driver Registration/Login:
+Similar to user registration/login but dedicated to drivers.
+Captures driver details and authenticates against SQLite for access.
+
+Ride Booking
+
+Ride Request:
+Users can request rides by providing pickup/drop-off locations, pickup time, and payment details and which car_type they wanna choose.
+Utilizes MongoDB to store ride-related information such as pickup/drop-off details, ride fares, and payment types.
+Calculates ride fares based on distance and selected vehicle type.
+used a seperate mongo Database for ride_request which stores all the requested rides which show up on the driver page, only when a driver accepts a ride
+the status is changed to accepted and the data is added to user and driver rides.
+
+Vehicle Selection:
+Provides various vehicle options (e.g., Green, Berline, Van) with different fare rates.
+Retrieves fare rates from MongoDB to display to users during ride booking.
+
+Driver Management
+
+Accepting/Completing Rides:
+Drivers can accept ride requests and update ride statuses (e.g., accepted, finished) using MongoDB.
+Allows drivers to view and manage pending, ongoing, and completed rides.
+
+Database Structure
+
+SQLite (for User and Driver Authentication):
+Stores user and driver authentication details (e.g., usernames, passwords) using SQLAlchemy ORM.
+MongoDB (for Application Data):
+
+Contains collections for ride details, including pickup/drop-off locations, ride fares, user/driver IDs, timestamps, and ride statuses.
+
+Code Structure or blueprint
+static:
+The static folder contains all the constants in the app, like css files, uploaded images by the user or the driver in their respective folders,
+js files of the pages that use js.
+
+templates:
+All the html pages loaded on the webpage for the user and driver.
+
+__int__: accumulates all the blueprint, secret keys and stuff and puts it in a create_app function which is then passed to the main to run. 
+
+auth.py: handles all the authentication part of the website, like registering and login
+
+mongo_driver: handles insertion and updating of driver details in the mongo database
+
+mongo_user: handles insertion and updating of user details in the mongo database
+
+mongo: handles the ride_request details in the mongo database
+
+views_driver: contains and handles the logic of all the webpages for the user side of the website
+
+views_user: contains and handles the logic of all the webpages for the driver side of the website
+
+
+How to Run the Application
+Prerequisites:
+
+Python installed.
+Required Python packages installed (Flask, SQLAlchemy, PyMongo, etc.).
+Steps:
+
+Clone the repository.
+Set up and activate a virtual environment.
+Install necessary Python packages.
+Run the Flask application using the specified commands.
+Access the application using the provided URL.
+
+Conclusion
+The Uber-like app developed with Flask, SQLite, and MongoDB provides a platform for efficient ride booking and management, offering seamless authentication, ride booking functionalities, and driver management capabilities.
+
+
+Note: I didnt implement sockets in my app so there is no real time updates so we have to refresh the pages for the updates to happen after like driver accepting the ride
+or finishing the ride. 
+I will keep working on this and implement the real-time and chat feature.

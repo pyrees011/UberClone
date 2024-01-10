@@ -1,0 +1,212 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.settings-page {
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.location-settings, .language-settings {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    width: 55%;
+}
+
+.location-settings > h3, .language-settings > h3 {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.location-settings > .form-select, .language-settings > .form-select {
+    border: none;
+    background-color: rgb(238, 238, 238);;
+    border-radius: 6px;
+    height: 35px;
+}
+
+.custom-btn {
+    color: white;
+    background-color: black;
+    font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    border-radius: 8px;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.custom-btn:disabled {
+    border: none;
+    cursor: not-allowed;
+    background-color: rgb(232 232 232);
+    color: rgb(175, 175, 175);
+}
+
+.logout-box {
+    margin-top: 40px;
+    margin-bottom: 25px;
+    width: 55%;
+}
+
+.logout-box > h3 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.logout-box > p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.logout-box > .btn-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(232 232 232);
+    color: red;
+    font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    border-radius: 8px;
+    height: 40px;
+    width: 80px;
+}
+
+.ride-go-back {
+    margin-top: 20px;
+}
+
+.ride-go-back > .card {
+    width: 100%;
+    border: none;
+    text-align: left;
+    height: 50%;
+}
+
+.ride-go-back > .card > .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    height: 100%;
+    width: 100%;
+    gap: 2px;
+    padding-left: 0px;
+    margin-top: 10px;
+}
+
+.ride-go-back > .card > .card-body > h5 {
+    font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+.ride-go-back > .card > .card-body > p {
+    line-height: 25px;
+    margin-bottom: 20px;
+}
+
+.ride-go-back > .card > .card-body > a {
+    width: 50%;
+}
+
+.tax-form-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.tax-form-div > h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 44px;
+    text-align: left;
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+.tax-form-div > .tax-form {
+    width: 70%;
+
+}
+
+.tax-form > div {
+    margin-bottom: 15px;
+}
+
+.tax-form > div > input, .tax-form > div > select {
+    border: none;
+    background-color: rgb(238, 238, 238);
+    border-radius: 6px;
+    height: 50px;
+}
+
+.tax-form > div > input[type="checkbox"] {
+    background-color: white;
+    border: 3px solid grey;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    border-radius: 0px;
+}
+
+.tax-form > div > input[type="checkbox"]:checked {
+    background-color: black;
+    border: none;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    border-radius: 0px;
+}
+
+.tax-form > div > input[type="checkbox"]:focus {
+    outline: none;
+    border: 3px solid black;
+    border-radius: 0px;
+}
+
+.tax-form > div > input:focus {
+    outline: none;
+    border: 2px solid black;
+}
+
+.disclaimer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 100%;
+}
+
+.disclaimer-info > ol {
+    padding-left: 1rem;
+}
+
+.disclaimer-info > ol > li {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+} 
+
+.tax-form > button {
+    width: 100%;
+    margin-bottom: 40px;
+}

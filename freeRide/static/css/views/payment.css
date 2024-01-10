@@ -1,0 +1,178 @@
+.card {
+    height: 200px;
+    border-radius: 25px;
+    background-color: #f6f6f6;
+    padding: 20px;
+}
+
+.card:hover {
+    background-color: #e8e8e8;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: left;
+    height: 100%;
+    width: 100%;
+    gap: 5px;
+    padding: 20px;
+}
+
+.card-body > h5 {
+    font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+}
+
+.card-body > p {
+    color: #000000;
+    font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: left;
+}
+
+.payment-methods {
+    margin-top: 40px;
+}
+
+.payment-methods > h3 {
+    font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.payment-card {
+    height: 250px;
+    color: white;
+}
+
+.payment-card.visa {
+    background-color: darkblue;
+}
+
+.payment-card.cash {
+    background-color: darkgreen;
+}
+
+.card-body > p {
+    color: white;
+}
+
+.add-payment {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 40px;
+    padding: 10px;
+    border-bottom: 2px solid #b9b9b9;
+}
+
+.add-payment > svg {
+    margin-right: 20px;
+}
+
+.add-payment > h5 {
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.add-payment:hover {
+    background-color: #e8e8e8;
+}
+
+.profile-heading {
+    margin-top: 20px;
+}
+.profile-heading > h1 {
+    font-family: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 32px;
+    font-size: 24px;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+
+
+.profile {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.profile-logo {
+    display: flex;
+    height: 30px;
+    width: 30px;
+    color: white;
+    fill: white;
+    border: 4px solid black;
+    border-radius: 50%;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    align-self: start;
+    margin-top: 7px;
+}
+
+.add-payment-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 2px solid #b9b9b9;
+    padding-bottom: 20px;
+}
+
+.add-payment-profile > h5 {
+    font-size: 1rem;
+    margin-bottom: 0rem;
+}
+
+.add-payment-profile > p {
+    margin-bottom: 0rem;
+    font-size: 1rem;
+}
+
+.modal-body {
+    height: 420px;
+}
+
+.voucher_code {
+    width: 90%;
+    height: 45px;
+    background-color: transparent;
+    background: #e9e9e9b8;
+    border: none;
+    border-radius: 5px;
+}
+
+.voucher_code::placeholder {
+    padding-left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.modal-top {
+    margin: 20px;
+}
+
+.modal-top > h1 {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: left;
+    letter-spacing: -.8px;
+}
